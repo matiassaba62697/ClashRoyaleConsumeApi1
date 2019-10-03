@@ -2,7 +2,7 @@
 <div class="home " style="min-height: 700px;  margin-bottom: 0px;">
 
 
-  <div class="bestPlayers" [@animacionCuadro]="estadoCuadro" *ngIf="mejorJugador">
+  <div class="bestPlayers"  *ngIf="mejorJugador">
     <div class="card" >
       <h5 class="card-header"  > {{mejorJugador.name}}</h5>
 
@@ -55,10 +55,8 @@
               <h5 class="card-header">{{elemento.name}}</h5>
               <div class="card-body">
                   <img src="{{elemento.iconoUrl}}" class="card-img-top" alt="...">
-                <h6 class="card-subtitle mb-2 text-muted">{{elemento}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{elemento.tag}}</h6>
                 <div class="col-12 row">
-                <p class="card-text col-6"> Ubicacion</p>
-                <p class="card-text col-6">{{elemento.location.name}}</p>
                 <p class="card-text col-6">Copas</p>
                 <p class="card-text col-6">{{elemento.clanScore}}</p>
               </div>

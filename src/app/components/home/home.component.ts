@@ -8,34 +8,13 @@ import {Clans} from '../../models/clans/clans'
 import { ClanMembers } from 'src/app/models/clans/clan-members';
 import { Badge } from 'src/app/models/clans/badge';
 import { Player } from 'src/app/models/player/player';
-import { state, style, trigger, transition, animate } from '@angular/animations';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  animations:[
-trigger('animacionCuadro',
-[
-  state('estado1',
-    style({
-      opacity: '0'
-    })),
-    state('estado2',
-    style({
-      opacity: '1'
-    })),
-    transition('estado1 => estado2',
-    animate('1s')
-    ),
-    transition('estado2 => estado1',
-    animate('1s')
-    )
   
-]
-)
-
-  ]
 })
 export class HomeComponent implements OnInit {
 
@@ -67,15 +46,12 @@ pureba:string="hola";
   }
 
 
-  estadoCuadro='estado1';
 
-animar(){
-this.estadoCuadro = this.estadoCuadro ==='estado1'? 'estado2' : 'estado1';
-}
 
 
   
   constructor(private   clashService: ClashRoyaleService){
+    this.cargarClans()
 this.bestPlayer();
 // this.cargarPlayers("#2J08RPLQ8")
     console.log("data")
@@ -91,6 +67,10 @@ this.bestPlayer();
   iconClan(clanIcon:Clans){
     this.clashService.getIconClans(clanIcon.tag)
     .subscribe(response => {
+
+
+
+      console.log(clanIcon)
       clanIcon.iconoUrl=response.badge.image
     }
       , error => console.log( alert("error en la peticion de iconos"))
@@ -149,7 +129,7 @@ this.bestPlayer();
 validaBoton(filtro:String){
 if(filtro.length >0){
   this.segFilter=this.filterPost;
-  this.cargarClans()
+
 
 this.cargas= 1;
 }else{
@@ -160,7 +140,7 @@ this.cargas= 1;
 
   cargarClans(){
     const resultadoPost= [];
-  this.clanes = new Array<Clans>();
+
     this.clashService.getClans()
     .subscribe(response => {
       //es necesario que convierta el JSON que
@@ -171,6 +151,7 @@ this.cargas= 1;
 
             resultadoPost.push(clanTemp);
             this.iconClan(clanTemp);
+
             clanTemp.iconoUrl=this.urlsIcon;
             this.clanes = resultadoPost;
 
@@ -190,7 +171,7 @@ this.cargas= 1;
       .subscribe((response: any) => {
         this.clan = new Clans();
         this.clan = response;
-        console.log(response);
+
       }
         , error => console.log( alert("error en la peticion"))
       );

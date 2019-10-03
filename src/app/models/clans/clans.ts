@@ -1,6 +1,6 @@
 import { ClanMembers } from './clan-members';
 import {Badge} from './badge'
-
+import {Location} from './location'
 
 export class Clans {
     memberList: Array<ClanMembers>;

@@ -45,7 +45,7 @@ export class ClashRoyaleService {
   
 
 
- private iconUrl : string= "https://api.royaleapi.com/clan";
+ private iconUrl : string= "https://api-v2.royaleapi.com/clan";
   private iconAuthorization: string="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEwMywiaWRlbiI6IjYyODIxNzg0MjYxNzE1NTU4NCIsIm1kIjp7InVzZXJuYW1lIjoiIiwiZGlzY3JpbWluYXRvciI6IiIsImtleVZlcnNpb24iOjB9LCJ0cyI6MTU2OTg0OTYxODQ0NX0.6nCR5QBR0K1CvWd276YxXZWbSONwXCkWVVAfTG97U5E";
   public getIconClans(clanIconTag:string):Observable<any>{
     const httpOptions={
