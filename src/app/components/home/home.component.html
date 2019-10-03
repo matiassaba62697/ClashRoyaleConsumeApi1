@@ -1,0 +1,111 @@
+
+<div class="home " style="min-height: 700px;  margin-bottom: 0px;">
+
+
+  <div class="bestPlayers" [@animacionCuadro]="estadoCuadro" *ngIf="mejorJugador">
+    <div class="card" >
+      <h5 class="card-header"  > {{mejorJugador.name}}</h5>
+
+      <div class="card-body">
+        <div class="card-body col-12">
+
+          <h5 class="card-title " >{{mejorJugador.tag}}</h5>
+
+          <div class="col-12 row"   style="margin-left: 0%" >
+              <p class="card-text col-6"> TROFEOS</p>
+              <p class="card-text col-6">{{mejorJugador.trophies}}</p>
+              <p class="card-text col-6"><small>Clan</small> </p> 
+              <p class="card-text col-6">{{mejorJugador.clan.name}}</p>
+              <p class="card-text col-6"><small><small>Posicion en el rankin</small></small></p>
+              <p class="card-text col-6">{{mejorJugador.rank}}</p>
+              <p class="card-text col-6"><small><small>Posicion anterior</small></small></p>
+              <p class="card-text col-6">{{mejorJugador.previousRank}}</p>
+              <p class="card-text col-6">Nivel</p>
+              <p class="card-text col-6">{{mejorJugador.expLevel}}</p></div>
+
+        </div>
+        
+    </div>
+  </div></div>
+  
+
+
+<div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+  <table class="table table-striped">
+    <div class="etiquetas">
+      <thead>
+        <tr class="row">
+          <th class="border border-dark "><input type="text" class="form-control" name="filterPost"
+              placeholder="Buscar Clanes." [(ngModel)]="filterPost"></th>
+
+          <button class="boton" data-toggle="modal" data-target="#exampleModal" (click)="validaBoton(filterPost)">BUSCAR</button>
+        </tr>
+      </thead>
+    </div>
+      <tbody>
+
+
+        <div class="row col-12">
+          <tr
+            *ngFor="let elemento of clanes | filter:segFilter | paginate: { itemsPerPage: 8, currentPage: pageActualClans, id: 'first' }">
+
+
+            <div class="card" >
+
+              <h5 class="card-header">{{elemento.name}}</h5>
+              <div class="card-body">
+                  <img src="{{elemento.iconoUrl}}" class="card-img-top" alt="...">
+                <h6 class="card-subtitle mb-2 text-muted">{{elemento}}</h6>
+                <div class="col-12 row">
+                <p class="card-text col-6"> Ubicacion</p>
+                <p class="card-text col-6">{{elemento.location.name}}</p>
+                <p class="card-text col-6">Copas</p>
+                <p class="card-text col-6">{{elemento.clanScore}}</p>
+              </div>
+                <a class="card-link"> <button class="boton" data-toggle="modal" data-target="#exampleModal"
+                    (click)="getClanMember(elemento.tag)">MIEMBROS</button></a>
+                <a class="card-link">{{elemento.members}}</a>
+              </div>
+            </div>
+          </tr>
+        </div>
+      </tbody>
+ 
+  </table>
+  <pagination-controls *ngIf="segFilter" (pageChange)="pageActualClans = $event" id="first"></pagination-controls>
+
+  <table class="table table-striped">
+      <tbody>
+          <div class="row col-12">
+        <div class="row ">
+          <tr *ngFor="let elemento of players| paginate: { itemsPerPage: 8, currentPage: pageActualMiembros, id: 'second' }">
+            <div class="card" style="width: 19rem;">
+              <h5 class="card-header">{{elemento.name}}</h5>
+              <div class="card-body col-12">
+
+                <h5 class="card-title " >{{elemento.tag}}</h5>
+
+                <div class="col-12 row"  style="background-color: cyan; margin-left: 0%" >
+                    <p class="card-text col-6"> TROFEOS</p>
+                    <p class="card-text col-6">{{elemento.trophies}}</p>
+                    <p class="card-text col-6"><small>DONACIONES</small> </p> 
+                    <p class="card-text col-6">{{elemento.donations}}</p>
+                    <p class="card-text col-6">GANADAS</p>
+                    <p class="card-text col-6">{{elemento.wins}}</p>
+                    <p class="card-text col-6">PERDIDAS</p>
+                    <p class="card-text col-6">{{elemento.losses}}</p>
+                    <p class="card-text col-6">ROL</p>
+                    <p class="card-text col-6">{{elemento.role}}</p></div>
+
+                    <button  type="button"  style="background: black" class="btn btn-secondary btn-dark btn-lg"><a class="menu__link menu__link--select" style="color: white" (click)="cargarMejor(elemento)" [routerLink]="['../componentes']">componentes</a></button>
+              </div>
+            </div>
+          </tr>
+        </div>
+      </div>
+      </tbody>
+  </table>
+  <pagination-controls *ngIf="players" (pageChange)="pageActualMiembros = $event" id="second"></pagination-controls>
+</div>
+</div>
+

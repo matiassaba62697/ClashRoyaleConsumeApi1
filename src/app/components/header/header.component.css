@@ -1,0 +1,17 @@
+.header{
+    min-height: 80px;
+    margin: 0%;
+        border: none;
+        background-image:url(../../Images/logo-clashroyalela-normal.png);
+        background-size: 25% 100%;
+        background-attachment: inherit;
+        background-repeat: no-repeat;
+    margin-bottom: 0px;
+        width: 100%;
+    }
+
+
+    .back{
+        background-color: black;
+    }
+    

@@ -1,0 +1,41 @@
+
+<div class="home" style="min-height: 600px">
+
+
+    <div class="bestPlayers" *ngIf="jugador">
+        <div class="card" >
+          <h5 class="card-header"  > {{jugador.name}}</h5>
+    
+          <div class="card-body">
+            <div class="card-body col-12">
+    
+              <h5 class="card-title " >{{jugador.tag}}</h5>
+    
+              <div class="col-12 row"  style="background-color: cyan; margin-left: 0%" >
+                  <p class="card-text col-6"> TROFEOS</p>
+                  <p class="card-text col-6">{{jugador.trophies}}</p>
+                  <p class="card-text col-6"><small>Clan</small> </p> 
+                  <p class="card-text col-6">{{jugador.clan.name}}</p>
+                  <p class="card-text col-6"><small><small>Posicion en el rankin</small></small></p>
+                  <p class="card-text col-6">{{jugador.rank}}</p>
+                  <p class="card-text col-6"><small><small>Posicion anterior</small></small></p>
+                  <p class="card-text col-6">{{jugador.previousRank}}</p>
+                  <p class="card-text col-6">Nivel</p>
+                  <p class="card-text col-6">{{jugador.expLevel}}</p></div>
+    <button (click)="cargarMejor()">cargar</button>
+            </div>
+            
+        </div>
+      </div></div>
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+  
+  
