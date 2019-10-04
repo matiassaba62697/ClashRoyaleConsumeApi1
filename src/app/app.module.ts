@@ -12,7 +12,8 @@ import { ContentComponent } from './components/content/content.component';
 import { HomeComponent } from './components/home/home.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations' 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ClansComponent } from './components/clans/clans.component' 
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     FooterComponent,
     ContentComponent,
     HomeComponent,
-    FilterPipe
+    FilterPipe,
+    ClansComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -6,7 +6,7 @@
     <div class="card" >
       <h5 class="card-header"  > {{mejorJugador.name}}</h5>
 
-      <div class="card-body">
+      <div class="card-body"style="background-image:url(../../Images/fdc4cbb78d11d28f99f7a8495f0dacdf.jpg)">
         <div class="card-body col-12">
 
           <h5 class="card-title " >{{mejorJugador.tag}}</h5>
@@ -45,26 +45,37 @@
       <tbody>
 
 
-        <div class="row col-12">
+        <div class="row col-12 ">
           <tr
             *ngFor="let elemento of clanes | filter:segFilter | paginate: { itemsPerPage: 8, currentPage: pageActualClans, id: 'first' }">
 
 
-            <div class="card" >
+            <div class="card fondo text-white"  style="background-color: black"  >
 
-              <h5 class="card-header">{{elemento.name}}</h5>
-              <div class="card-body">
-                  <img src="{{elemento.iconoUrl}}" class="card-img-top" alt="...">
-                <h6 class="card-subtitle mb-2 text-muted">{{elemento.tag}}</h6>
+            <img src="https://statsroyale.com/images/clanwars/{{elemento.badgeId}}_magical.png" class="card-img-top backgroundClans" alt="card-img" style="width:350%">
+
+              <div class="card-body card-img-overlay" >
+                  <h5 class="col-8" >{{elemento.name}}
+                    </h5>
+                  <img  src="https://statsroyale.com/images/flags/{{elemento.location.id}}.png" onerror="this.src='http://4.bp.blogspot.com/-H4O3wD-AY-E/Tye6d7oP3_I/AAAAAAAAAJE/-gWRdvTHmEE/s1600/1920x1920_bandera_de_la_paz.gif'" style="width: 25px; height: 25px;"  alt="">
+
+                                 <h6 class="card-subtitle mb-2 text-muted">{{elemento.tag}}</h6>
                 <div class="col-12 row">
+                    <p class="card-text col-6"> <small>Localisacion</small></p>
+                  <p class="card-text col-6">{{elemento.location.name}}</p>
                 <p class="card-text col-6">Copas</p>
                 <p class="card-text col-6">{{elemento.clanScore}}</p>
               </div>
-                <a class="card-link"> <button class="boton" data-toggle="modal" data-target="#exampleModal"
+                <a class="card-link"> <button class="btn btn-primary btn-lg active" data-toggle="modal" data-target="#exampleModal"
                     (click)="getClanMember(elemento.tag)">MIEMBROS</button></a>
                 <a class="card-link">{{elemento.members}}</a>
               </div>
             </div>
+
+
+
+
+
           </tr>
         </div>
       </tbody>
@@ -76,14 +87,17 @@
       <tbody>
           <div class="row col-12">
         <div class="row ">
+
           <tr *ngFor="let elemento of players| paginate: { itemsPerPage: 8, currentPage: pageActualMiembros, id: 'second' }">
-            <div class="card" style="width: 19rem;">
-              <h5 class="card-header">{{elemento.name}}</h5>
-              <div class="card-body col-12">
+              <a class="menu__link menu__link--select" style="color: white" (click)="cargarMejor(elemento)" routerLink="/componentes/{{elemento.tag}}">
+            <div class="card fondo text-white " style="background-color: black"  >
+                <img src="https://statsroyale.com/images/clanwars/{{elemento.clan.badgeId}}_magical.png" class="card-img-top backgroundPlayers" alt="card-img" style="width:350%">
 
-                <h5 class="card-title " >{{elemento.tag}}</h5>
+              <div class="card-body col-12 card-img-overlay">
+                  <h5 class="card-header">{{elemento.name}}</h5>
+                <h5 class="card-title text-muted " >{{elemento.tag}}</h5>
 
-                <div class="col-12 row"  style="background-color: cyan; margin-left: 0%" >
+                <div class="col-12 row"   >
                     <p class="card-text col-6"> TROFEOS</p>
                     <p class="card-text col-6">{{elemento.trophies}}</p>
                     <p class="card-text col-6"><small>DONACIONES</small> </p> 
@@ -95,9 +109,10 @@
                     <p class="card-text col-6">ROL</p>
                     <p class="card-text col-6">{{elemento.role}}</p></div>
 
-                    <button  type="button"  style="background: black" class="btn btn-secondary btn-dark btn-lg"><a class="menu__link menu__link--select" style="color: white" (click)="cargarMejor(elemento)" [routerLink]="['../componentes']">componentes</a></button>
               </div>
             </div>
+          </a>
+
           </tr>
         </div>
       </div>

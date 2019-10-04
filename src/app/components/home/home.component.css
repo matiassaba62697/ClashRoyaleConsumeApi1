@@ -7,6 +7,13 @@ overflow: scroll;
 .card{
     margin-left: 10%;
     width: 18rem;
+
+}
+.backgroundPlayers{
+    background-color: rgba(0,0,0,0.12);
+    filter:brightness(0.4);
+    height: 20em;
+    width: 13em;
     
 }
 .home{
@@ -18,7 +25,22 @@ margin: 0%;
 
     width: 100%;
 }
+.fondo{
+    border-color: white;
 
+    background-size:  18rem;
+    background-attachment:inherit;
+    margin-left: 10%;
+    width: 18rem;
+    
+}
+.backgroundClans{
+    background-color: rgba(0,0,0,0.12);
+    filter:brightness(0.4);
+    height: 17em;
+    width: 13em;
+    
+}
 img{
     display: block;
     width: 100%;

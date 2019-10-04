@@ -1,12 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { FormsModule } from '@angular/forms'
+
 import { ClashRoyaleService } from '../../services/clash-royale.service'
-import { Observable, from } from 'rxjs';
+
 import {Clans} from '../../models/clans/clans'
 import { ClanMembers } from 'src/app/models/clans/clan-members';
-import { Badge } from 'src/app/models/clans/badge';
+
 import { Player } from 'src/app/models/player/player';
 
 
@@ -42,7 +40,7 @@ pureba:string="hola";
 
 
   ngOnInit() {
-    console.log(this.informacion)
+
   }
 
 
@@ -51,6 +49,7 @@ pureba:string="hola";
 
   
   constructor(private   clashService: ClashRoyaleService){
+
     this.cargarClans()
 this.bestPlayer();
 // this.cargarPlayers("#2J08RPLQ8")
@@ -64,19 +63,6 @@ this.bestPlayer();
 
 
 
-  iconClan(clanIcon:Clans){
-    this.clashService.getIconClans(clanIcon.tag)
-    .subscribe(response => {
-
-
-
-      console.log(clanIcon)
-      clanIcon.iconoUrl=response.badge.image
-    }
-      , error => console.log( alert("error en la peticion de iconos"))
-    );
-  }
-  
   bestPlayer(){
     
      var besplayers=new Array<Player>();
@@ -115,6 +101,7 @@ this.bestPlayer();
     this.players=new Array<Player>();
     this.clashService.getPlayers(playerTag)
     .subscribe(response => {
+      console.log(response)
         var playerTemp= new Player();
         Object.assign(playerTemp, response);
         this.players.push(playerTemp);
@@ -138,6 +125,9 @@ this.cargas= 1;
 }
 }
 
+
+
+
   cargarClans(){
     const resultadoPost= [];
 
@@ -145,12 +135,13 @@ this.cargas= 1;
     .subscribe(response => {
       //es necesario que convierta el JSON que
           response.items.forEach(element => {
+            console.log(element);
             this.urlsIcon='';
             var clanTemp = new Clans();
             Object.assign(clanTemp, element);
 
             resultadoPost.push(clanTemp);
-            this.iconClan(clanTemp);
+
 
             clanTemp.iconoUrl=this.urlsIcon;
             this.clanes = resultadoPost;
@@ -160,8 +151,7 @@ this.cargas= 1;
         }
           , error => console.log(error)
         );
-        console.log(this.clanes)
-    };    
+   };    
 
 
 

@@ -7,13 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 constructor(){
-  this.grabarLocalStorage();
-}
-
-grabarLocalStorage(){
-  let nombre :string= "matias";
-  localStorage.setItem("nombre", nombre);
-  
 }
 
 

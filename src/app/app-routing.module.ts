@@ -5,7 +5,7 @@ import {ContentComponent} from "./components/content/content.component"
 
 const routes: Routes = [
 { path: 'home', component:HomeComponent},
-{ path: 'componentes', component:ContentComponent},
+{ path: 'componentes/:tag', component:ContentComponent},
 {path: '**', pathMatch:'full',redirectTo:'home'}
 
 ];
