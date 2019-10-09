@@ -11,7 +11,7 @@ export class ClashRoyaleService {
   private baseUrl : string= "https://api.clashroyale.com/v1/clans";
   //private baseClans: string="https://api.clashroyale.com/v1/clans?minMembers=2";
 
-  private baseClans: string="https://api.clashroyale.com/v1/clans?minMembers=49&maxMembers=50&minScore=70000";
+  private baseClans: string="https://api.clashroyale.com/v1/clans?minScore=56500";
   private basePlayers: string="https://api.clashroyale.com/v1/players";
   
 
@@ -28,7 +28,6 @@ export class ClashRoyaleService {
   
     PlayerTag = PlayerTag.replace("#", "%23");
     ///console.log(this.baseUrl + "/" + clanTag + "/members" + consultUrl);
-  
     return this._http.get(this.basePlayers + "/" + PlayerTag , httpOptions);
   }
   

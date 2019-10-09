@@ -49,7 +49,7 @@
         
         </div>
      
-<div class="rounded-lg" style="min-height: 700px; background-color: white;margin-left: 10%;  margin-bottom: 10px; margin-right: 10%; margin-top: 2%;">
+<div class="rounded-lg" style="min-height: 700px; background:rgba(255,255,255, .6);margin-left: 10%;  margin-bottom: 10px; margin-right: 10%; margin-top: 2%;">
 
 
                 <div *ngIf="clan" data-spy="scroll" data-target="#navbar-example3" data-offset="0">
@@ -143,7 +143,8 @@
                                       <div class="row ">
                               
                                         <tr *ngFor="let elementoP of players| paginate: { itemsPerPage: 8, currentPage: pageActualMiembros, id: 'second' }">
-                                            <a class="menu__link menu__link--select" style="color: white"  >
+                                            <a class="menu__link menu__link--select" style="color: white"  routerLink="/jugador/{{elementoP.tag}}">
+            
                                           <div class="card fondo text-white " style="background-color: black"  >
                                               <img src="https://statsroyale.com/images/clanwars/{{elementoP.clan.badgeId}}_magical.png" class="card-img-top backgroundPlayers" alt="card-img" style="width:350%">
                               

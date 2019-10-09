@@ -60,7 +60,7 @@
 
 
 
-<div class="home rounded-lg" style="min-height: 600px;margin-top: 20px; margin-right: 10%;  margin-left: 10%; background-color: white">
+<div class="home rounded-lg" style="min-height: 600px;margin-top: 20px; margin-right: 10%;  margin-left: 10%; background:rgba(255,255,255, .6)">
 
 
 
@@ -80,13 +80,13 @@
               <h5 class="card-title " >{{jugador1.tag}}</h5>
     
               <div class="col-12 row"  style=" margin-left: 0%" >
-                <img src="https://statsroyale.com/images/clanwars/{{jugador1.clan.badgeId}}_magical.png" alt="">
+                <img *ngIf="jugador1.clan" src="https://statsroyale.com/images/clanwars/{{jugador1.clan.badgeId}}_magical.png" alt="">
                   <p class="card-text col-6"> TROFEOS</p>
                   <p class="card-text col-6">{{jugador1.trophies}}</p>
-                  <p class="card-text col-6"><small>Clan</small> </p> 
-                  <p class="card-text col-6">{{jugador1.clan.name}}</p>
-                  <p class="card-text col-6"><small>Clan Tag</small> </p> 
-                  <p class="card-text col-6">{{jugador1.clan.tag}}</p>
+                  <p class="card-text col-6"*ngIf="jugador1.clan"><small>Clan</small> </p> 
+                  <p class="card-text col-6" *ngIf="jugador1.clan">{{jugador1.clan.name}}</p>
+                  <p class="card-text col-6" *ngIf="jugador1.clan"><small>Clan Tag</small> </p> 
+                  <p class="card-text col-6" *ngIf="jugador1.clan">{{jugador1.clan.tag}}</p>
                   <p class="card-text col-6"><small><small>Donaciones</small></small></p>
                   <p class="card-text col-6">{{jugador1.donations}}</p>
                   <p class="card-text col-6"><small><small>Partidas ganadas</small></small></p>
@@ -223,13 +223,13 @@
         <table class="table table-hover table-dark col-4" style="width: 220px">
            <tr>
               <td rowspan="3"><img src="https://cdn.statsroyale.com/images/legendaryPoints.png" alt=""  style="height: 100px; width: 200px;"><small>TEMPORADA ANTERIOR</small>
-             </td> <td>Puesto</td>  <td>{{jugador1.leagueStatistics.previousSeason.rank}}</td>
+             </td> <td>Puesto</td>  <td *ngIf="jugador1.leagueStatistics.previousSeason">{{jugador1.leagueStatistics.previousSeason.rank}}</td>
            </tr>
            <tr>
-              <td>Máximo de trofeos</td>  <td>{{jugador1.leagueStatistics.previousSeason.bestTrophies}}</td>
+              <td>Máximo de trofeos</td>  <td *ngIf="jugador1.leagueStatistics.previousSeason">{{jugador1.leagueStatistics.previousSeason.bestTrophies}}</td>
            </tr>
            <tr>
-              <td>Trofeos</td>  <td>{{jugador1.leagueStatistics.previousSeason.trophies}}</td>
+              <td>Trofeos</td>  <td *ngIf="jugador1.leagueStatistics.previousSeason">{{jugador1.leagueStatistics.previousSeason.trophies}}</td>
            </tr>
         </table>
        </td>

@@ -1,4 +1,4 @@
-<div class=" bacnavbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar" style="height:  60px" >
+<div class=" bacnavbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar control"  >
 <div class="header col-6" >
     <a class="menu__link menu__link--select" style="color: black" [routerLink]="['home']">
 <img src="http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c51a.png" alt="" style="width: 100px; margin-top: -10px;">   
@@ -7,9 +7,9 @@
 </a>
 </div>
 
- <div class="float-right" style="margin-top: -80px; margin-right: 30px">
+ <div class="float-right controlador" style=" margin-right: 30px">
 <div class="input-group mb-3 ">
-    <input type="text" class="form-control" [(ngModel)]="busqueda" placeholder="{{placeholder}}" aria-label="Input group example" aria-describedby="btnGroupAddon">
+    <input type="text" class="form-control"  [(ngModel)]="busqueda" placeholder="{{placeholder}}" aria-label="Input group example" aria-describedby="btnGroupAddon">
        <div class="input-group-prepend">
 <button id="btn1" onclick="
 document.getElementById('contenidos').style.display='block'
@@ -23,10 +23,14 @@ document.getElementById('btn1').style.display='block'
 document.getElementById('btn2').style.display='none'" type="button" class="btn btn-outline-secondary dropdown-toggle-split" >
 {{etiqueta}} 
 </button>
-<a href="{{redirec}}">
-<button  router type="button" class="btn btn-outline-secondary"> <img src="https://img.icons8.com/metro/26/000000/search.png"> </button>
-</a>
+<!--href="{{redirec}}"-->
+<div class="disabled">
+<a (click)="mostrar()" href="{{redirec}}"  >
 
+<button  router type="button" class="btn btn-outline-secondary"> <img src="https://img.icons8.com/metro/26/000000/search.png"> </button>
+
+</a>
+</div>
 <div style="display: none; margin-left: 130px;" id="contenidos" class="dropdown-menu">
 
   <a 
@@ -41,13 +45,8 @@ document.getElementById('btn2').style.display='none'" type="button" class="btn b
   document.getElementById('contenidos').style.display='none'
   document.getElementById('btn1').style.display='block'
   document.getElementById('btn2').style.display='none'"class="dropdown-item" >Clanes</a>
-  <div role="separator" class="dropdown-divider"></div>
-  <a 
-  (click)=" cartas()"
-  onclick="
-  document.getElementById('contenidos').style.display='none'
-  document.getElementById('btn1').style.display='block'
-  document.getElementById('btn2').style.display='none'" class="dropdown-item" >Cartas</a>
+
+
 </div>
       </div>
     </div></div>

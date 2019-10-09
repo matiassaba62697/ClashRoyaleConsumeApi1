@@ -23,6 +23,26 @@
     -ms-flex-direction: row!important;
     flex-direction: row!important;
 }}
+@media(min-width: 501px){
+    .control{
+        background-color: black;
+        height: 60px
+        
+    }
+    .controlador{
+        margin-top: -80px;
+    }
+}
+@media(max-width: 500px){
+    .control{
+        height:  120px
+    }
+    .controlador{
+        margin-top: -20px;
+    }
+}
+
+
 .flex-column {
     -ms-flex-direction: column!important;
     flex-direction: column!important;

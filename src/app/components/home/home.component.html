@@ -1,10 +1,11 @@
 
-<div class="home " style="min-height: 700px;  margin-bottom: 0px;">
+<div  class="home " style="min-height: 700px;  margin-bottom: 0px; background:rgba(255,255,255, .6); margin-right: 5%;margin-left: 5%">
 
-<div style="margin-top: 30px">
-  <div class="bestPlayers"  *ngIf="mejorJugador" style="position: inherit;">
+<div style="margin-top: 30px" *ngIf="mejor" >
+  <tr *ngFor="let mejorJugador of mejores3">
+  <div class="bestPlayers"   style="position: inherit;">
     <div class="card" >
-    <h5 class="card-header"  > {{mejorJugador.name}}</h5>
+    <h5 class="card-header" > {{mejorJugador.name}}</h5>
 
       <div class="card-body"style="background-image:url(../../Images/fdc4cbb78d11d28f99f7a8495f0dacdf.jpg)">
         <div class="card-body col-12">
@@ -14,8 +15,8 @@
           <div class="col-12 row"   style="margin-left: 0%" >
               <p class="card-text col-6"> TROFEOS</p>
               <p class="card-text col-6">{{mejorJugador.trophies}}</p>
-              <p class="card-text col-6"><small>Clan</small> </p> 
-              <p class="card-text col-6">{{mejorJugador.clan.name}}</p>
+              <p class="card-text col-6" *ngIf="mejorJugador.clan"><small>Clan</small> </p> 
+              <p class="card-text col-6" *ngIf="mejorJugador.clan" >{{mejorJugador.clan.name}}</p>
               <p class="card-text col-6"><small><small>Posicion en el rankin</small></small></p>
               <p class="card-text col-6">{{mejorJugador.rank}}</p>
               <p class="card-text col-6"><small><small>Posicion anterior</small></small></p>
@@ -26,7 +27,7 @@
         </div>
         
     </div>
-  </div></div>
+  </div></div></tr>
   
 <!---->
 

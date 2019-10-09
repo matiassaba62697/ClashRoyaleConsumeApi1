@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ClashRoyaleService } from '../../services/clash-royale.service'
 
@@ -33,9 +33,9 @@ pageActualMiembros:number=1;
 urlsIcon:String;
 player:Player;
 players:Array<Player>;
-mejorJugador: Player;
 
-@Input() informacion:string;
+
+
 pureba:string="hola";
 
 
@@ -61,18 +61,18 @@ this.bestPlayer();
   localStorage.setItem("mejor", JSON.stringify(elemento) );   
 }
 
-
+mejores3:Array<Player>;
+mejor:Player;
 
   bestPlayer(){
-    
-     var besplayers=new Array<Player>();
-
+    this.mejores3= new Array<Player>();
     this.clashService.getBestPlayes()
     .subscribe(response => {
-      besplayers= response;
-      this.mejorJugador=besplayers[0];
+      this.mejor= response[2];
 
-    }
+  
+      this.mejores3.push(response[0],response[1],response[2])
+}
       , error => console.log( alert("error en la peticion de mejores jugadores"))
     );
   }
@@ -130,16 +130,16 @@ this.cargas= 1;
 
   cargarClans(){
     const resultadoPost= [];
-
+this.clanes= new Array<Clans>();
     this.clashService.getClans()
     .subscribe(response => {
       //es necesario que convierta el JSON que
           response.items.forEach(element => {
-            console.log(element);
+
             this.urlsIcon='';
             var clanTemp = new Clans();
             Object.assign(clanTemp, element);
-
+this.clanes.push(clanTemp)
             resultadoPost.push(clanTemp);
 
 
@@ -155,17 +155,8 @@ this.cargas= 1;
 
 
 
-  
-  getClanTag() {
-    this.clashService.getClanTag("#P8G2JQ0R")
-      .subscribe((response: any) => {
-        this.clan = new Clans();
-        this.clan = response;
 
-      }
-        , error => console.log( alert("error en la peticion"))
-      );
   }
 
 
-}
+

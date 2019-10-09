@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from 'src/app/models/player/player';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { ClashRoyaleService } from '../../services/clash-royale.service'
 
 import {Clans} from '../../models/clans/clans'
-import { ClanMembers } from 'src/app/models/clans/clan-members';
+
 
 
 
@@ -52,7 +52,8 @@ export class ContentComponent implements OnInit {
         console.log(response)
 this.jugador1=response;
       }
-        , error => console.log( alert("error en la peticion"))
+        , error => console.log( alert("error en la peticion getplayer1tag"))
+
       );
   }
 
@@ -85,7 +86,7 @@ this.carts= new Array<any>();
   this.carts=this.carts[0];
 
       }
-        , error => console.log( alert("error en la peticion"))
+        , error => console.log( alert("error en la peticion getplayer2tag"))
       );
   }
 

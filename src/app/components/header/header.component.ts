@@ -12,20 +12,27 @@ export class HeaderComponent implements OnInit {
   etiqueta:string;
  //print(json.dumps(r.json(), indent = 2))
   constructor() { 
-    this.etiqueta="jugadores";
+    this.jugadores();
   }
-redirec:string="jugador/%23P9GGPQJUP"
+redirec:string=""
 placeholder:string="Tag de Jugadores";
-busqueda:string;
+busqueda:string='';
+
+mostrar(){
+  if(this.busqueda.length>6){
 
 
-
-cartas(){
-
-  this.placeholder="Nombre de Carta"
-  this.redirec="card/"+this.busqueda;
-  this.etiqueta="cartas";
+if(  this.etiqueta=="clanes"){
+  this.clanes();
+}if(  this.etiqueta=="jugadores"){
+  this.jugadores()
 }
+}else{
+  this.redirec="#"
+  console.log(this.busqueda)
+}}
+
+
 jugadores(){
 
   this.placeholder="Tag de Jugadores"
@@ -33,7 +40,7 @@ jugadores(){
   this.etiqueta="jugadores"
 }
 clanes(){
-
+console.log(this.busqueda)
   this.placeholder="Tag de Clanes"
   this.redirec="clan/%23"+this.busqueda;
   this.etiqueta="clanes"
