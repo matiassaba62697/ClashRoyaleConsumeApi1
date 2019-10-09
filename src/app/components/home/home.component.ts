@@ -157,7 +157,7 @@ this.cargas= 1;
 
   
   getClanTag() {
-    this.clashService.getTag("#P8G2JQ0R")
+    this.clashService.getClanTag("#P8G2JQ0R")
       .subscribe((response: any) => {
         this.clan = new Clans();
         this.clan = response;

@@ -1,1 +1,217 @@
-<p>clans works!</p>
+<div style="margin-left: 10%;  margin-bottom: 10px; margin-right: 10%; margin-top: 2%;"> 
+                <ul class="nav nav-tabs">
+                        <li>
+                                        <button id="btnHome"
+                                        onclick="
+                                        document.getElementById('contenido1').style.display='block'
+                                        document.getElementById('contenido2').style.display='none'
+                                        document.getElementById('contenido3').style.display='none'
+                                        document.getElementById('btnHome').style.color='black'
+                                        document.getElementById('btnHome').style.backgroundColor='white'
+                                        document.getElementById('btnCartas').style.color='white'
+                                        document.getElementById('btnCartas').style.backgroundColor='transparent'
+                                        document.getElementById('btnEstadisticas').style.color='white'
+                                        document.getElementById('btnEstadisticas').style.backgroundColor='transparent'"
+                                        class="btn btn-outline-light" 
+                                        style="color:black; background-color: white;border: 1px solid rgba(0, 0, 0, .0);">Home</button>
+                        </li>
+                        <li>
+                                        <button id="btnCartas" 
+                                        onclick="
+                                        document.getElementById('contenido1').style.display='none'
+                                        document.getElementById('contenido2').style.display='block'
+                                        document.getElementById('contenido3').style.display='none'
+                                        document.getElementById('btnHome').style.color='white'
+                                        document.getElementById('btnHome').style.backgroundColor='transparent'
+                                        document.getElementById('btnCartas').style.color='black'
+                                        document.getElementById('btnCartas').style.backgroundColor='white'
+                                        document.getElementById('btnEstadisticas').style.color='white'
+                                        document.getElementById('btnEstadisticas').style.backgroundColor='transparent'"
+                                         class="btn btn-outline-light" 
+                                        style="background-color: transparent;border: 1px solid rgba(0, 0, 0, .0);">Miembros</button>
+                        </li>
+                        <li>
+                                        <button id="btnEstadisticas"
+                                        onclick="
+                                        document.getElementById('contenido1').style.display='none'
+                                        document.getElementById('contenido2').style.display='none'
+                                        document.getElementById('contenido3').style.display='block'
+                                        document.getElementById('btnHome').style.color='white'
+                                        document.getElementById('btnHome').style.backgroundColor='transparent'
+                                        document.getElementById('btnCartas').style.color='white'
+                                        document.getElementById('btnCartas').style.backgroundColor='transparent'
+                                        document.getElementById('btnEstadisticas').style.color='black'
+                                        document.getElementById('btnEstadisticas').style.backgroundColor='white'" class="btn btn-outline-light" 
+                                        style="background-color: transparent;border: 1px solid rgba(0, 0, 0, .0);">
+                                        Registro de Guerra</button>
+                        </li>
+                </ul>
+        
+        </div>
+     
+<div class="rounded-lg" style="min-height: 700px; background-color: white;margin-left: 10%;  margin-bottom: 10px; margin-right: 10%; margin-top: 2%;">
+
+
+                <div *ngIf="clan" data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+                                <table id="contenido1"class="table table-striped">
+                                    <tbody>
+                              
+                              
+                                      <div class="row col-12 ">
+
+                              
+                              
+                                          <div class="card fondo text-white"  style="background-color: black"  >
+                              
+                                          <img src="https://statsroyale.com/images/clanwars/{{clan.badgeId}}_magical.png" class="card-img-top backgroundClans" alt="card-img" style="width:360%">
+                              
+                                            <div class="card-body card-img-overlay" >
+                                                <a class="menu__link menu__link--select" style="color: white" >
+                                                  <h5 class="col-8" >{{clan.name}}
+                                                    </h5>
+                                                </a>
+                                      
+                                                <img  src="https://statsroyale.com/images/flags/{{clan.location.id}}.png" onerror="this.src='http://4.bp.blogspot.com/-H4O3wD-AY-E/Tye6d7oP3_I/AAAAAAAAAJE/-gWRdvTHmEE/s1600/1920x1920_bandera_de_la_paz.gif'" style="width: 25px; height: 25px;"  alt="">
+                              
+                                                               <h6 class="card-subtitle mb-2 text-muted">{{clan.tag}}</h6>
+                                              <div class="col-12 row">
+                                                  <p class="card-text col-6"> <small>Localisacion</small></p>
+                                                <p class="card-text col-6">{{clan.location.name}}</p>
+                                              <p class="card-text col-6">Copas</p>
+                                              <p class="card-text col-6">{{clan.clanScore}}</p>
+                                              <p class="card-text col-6">Copas</p>
+                                              <p class="card-text col-6">{{clan.clanScore}}</p>
+                                              
+                                            </div>
+                                      
+                                            </div>
+                                          </div>
+                                 
+                                          <div class="card fondo text-white"  style="background-color: black"  >
+                              
+                                              <img src="https://statsroyale.com/images/clanwars/{{clan.badgeId}}_magical.png" class="card-img-top backgroundClans" alt="card-img" style="width:350%">
+                                  
+                                                <div class="card-body card-img-overlay" >
+                    
+                                          
+                                              <div class="col-12 row">
+                                                  <p class="card-text ">Descripcion</p>
+                                                    <p class="card-text ">{{clan.description}}</p>
+                                          
+                                                </div>
+                                          
+                                                </div>
+                                              </div>
+                              
+                                          <div class="card fondo text-white"  style="background-color: black; height:  300px ;"  >
+                              
+                                            <img src="https://statsroyale.com/images/clanwars/{{clan.badgeId}}_magical.png" class="card-img-top backgroundClans" alt="card-img" style="width:370%">
+                                
+                                              <div class="card-body card-img-overlay" >
+                                        
+                                        
+                                            <div class="col-12 row">
+                                                <p class="card-text col-6"> <small>Trofeos Requeridos</small></p>
+                                                <p class="card-text col-6">{{clan.requiredTrophies}}</p>
+                                                    <p class="card-text col-6"> <small>Donaciones por semanas</small></p>
+                                                  <p class="card-text col-6">{{clan.donationsPerWeek}}</p>
+                                                <p class="card-text col-6">Tipo</p>
+                                                <p class="card-text col-6">{{clan.type}}</p>
+                                                <p class="card-text col-6">Copas</p>
+                                                <p class="card-text col-6">{{clan.clanScore}}</p>
+    
+                                                <p class="card-text col-6"><small>Trofeos de guerra</small> </p>
+                                                <p class="card-text col-6">{{clan.clanWarTrophies}}</p>
+                                              </div>
+                                        
+                                              </div>
+                                            </div>
+                             
+                                  
+                              
+                              
+                              
+
+                                      </div>
+                                    </tbody>
+                               
+                                </table>
+                              <div id="contenido2" style="display: none">                         
+                                             <table class="table table-striped">
+                                    <tbody>
+                                        <div class="row col-12">
+                                      <div class="row ">
+                              
+                                        <tr *ngFor="let elementoP of players| paginate: { itemsPerPage: 8, currentPage: pageActualMiembros, id: 'second' }">
+                                            <a class="menu__link menu__link--select" style="color: white"  >
+                                          <div class="card fondo text-white " style="background-color: black"  >
+                                              <img src="https://statsroyale.com/images/clanwars/{{elementoP.clan.badgeId}}_magical.png" class="card-img-top backgroundPlayers" alt="card-img" style="width:350%">
+                              
+                                            <div class="card-body col-12 card-img-overlay">
+                                                <h5 class="card-header">{{elementoP.name}}</h5>
+                                              <h5 class="card-title text-muted " >{{elementoP.tag}}</h5>
+                              
+                                              <div class="col-12 row"   >
+                                                  <p class="card-text col-6"> TROFEOS</p>
+                                                  <p class="card-text col-6">{{elementoP.trophies}}</p>
+                                                  <p class="card-text col-6"><small>DONACIONES</small> </p> 
+                                                  <p class="card-text col-6">{{elementoP.donations}}</p>
+                                                  <p class="card-text col-6">GANADAS</p>
+                                                  <p class="card-text col-6">{{elementoP.wins}}</p>
+                                                  <p class="card-text col-6">PERDIDAS</p>
+                                                  <p class="card-text col-6">{{elementoP.losses}}</p>
+                                                  <p class="card-text col-6">ROL</p>
+                                                  <p class="card-text col-6">{{elementoP.role}}</p></div>
+                              
+                                            </div>
+                                          </div>
+                                        </a>
+                              
+                                        </tr>
+                                      </div>
+                                    </div>
+                                    </tbody>
+                                </table>
+                                <pagination-controls *ngIf="players" (pageChange)="pageActualMiembros = $event" id="second"></pagination-controls>
+                        </div>
+<div id="contenido3" style="display: none;background-color: black">
+<div *ngIf="warslog" style=" margin-top: 2% ; margin-bottom: 2%; color: white;margin-left: 5%">
+           <tr  *ngFor="let item of warslog"   >
+                   <p class="rounded-top" style="background-color: azure; margin-bottom: 0%; color: black">{{item.seasonNumber}}</p>
+                   <table class="table table-hover table-dark" >
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Clan</th>
+                                    <th scope="col">Participantes</th>
+                                    <th scope="col">Coronas</th>
+                                    <th scope="col">Gana</th>
+                                    <th scope="col">Cambio</th>
+                                    <th scope="col">Trofeos</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let start of item.standings">
+                                    <th scope="row">{{start.name}}</th>
+                                    <td>{{start.participants}}</td>
+                                    <td>{{start.crowns}}</td>
+                                    <td>{{start.wins}}</td>
+                                    <td>{{start.warTrophiesChange}}</td>
+                                    <td>{{start.warTrophies}}</td>
+                                  </tr>
+                                
+                                </tbody>
+                              </table>
+           </tr>
+
+</div>
+
+</div>
+                        </div>
+
+
+        </div>
+
+
+
+
+

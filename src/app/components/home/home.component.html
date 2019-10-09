@@ -1,10 +1,10 @@
 
 <div class="home " style="min-height: 700px;  margin-bottom: 0px;">
 
-
-  <div class="bestPlayers"  *ngIf="mejorJugador">
+<div style="margin-top: 30px">
+  <div class="bestPlayers"  *ngIf="mejorJugador" style="position: inherit;">
     <div class="card" >
-      <h5 class="card-header"  > {{mejorJugador.name}}</h5>
+    <h5 class="card-header"  > {{mejorJugador.name}}</h5>
 
       <div class="card-body"style="background-image:url(../../Images/fdc4cbb78d11d28f99f7a8495f0dacdf.jpg)">
         <div class="card-body col-12">
@@ -28,7 +28,7 @@
     </div>
   </div></div>
   
-
+<!---->
 
 <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
   <table class="table table-striped">
@@ -55,8 +55,11 @@
             <img src="https://statsroyale.com/images/clanwars/{{elemento.badgeId}}_magical.png" class="card-img-top backgroundClans" alt="card-img" style="width:350%">
 
               <div class="card-body card-img-overlay" >
-                  <h5 class="col-8" >{{elemento.name}}
-                    </h5>
+                  <a class="menu__link menu__link--select" style="color: white" (click)="cargarMejor(elemento)" routerLink="/clan/{{elemento.tag}}">
+                    <h5 class="col-8" >{{elemento.name}}
+                      </h5>
+                  </a>
+        
                   <img  src="https://statsroyale.com/images/flags/{{elemento.location.id}}.png" onerror="this.src='http://4.bp.blogspot.com/-H4O3wD-AY-E/Tye6d7oP3_I/AAAAAAAAAJE/-gWRdvTHmEE/s1600/1920x1920_bandera_de_la_paz.gif'" style="width: 25px; height: 25px;"  alt="">
 
                                  <h6 class="card-subtitle mb-2 text-muted">{{elemento.tag}}</h6>
@@ -89,7 +92,7 @@
         <div class="row ">
 
           <tr *ngFor="let elemento of players| paginate: { itemsPerPage: 8, currentPage: pageActualMiembros, id: 'second' }">
-              <a class="menu__link menu__link--select" style="color: white" (click)="cargarMejor(elemento)" routerLink="/componentes/{{elemento.tag}}">
+              <a class="menu__link menu__link--select" style="color: white" (click)="cargarMejor(elemento)" routerLink="/jugador/{{elemento.tag}}">
             <div class="card fondo text-white " style="background-color: black"  >
                 <img src="https://statsroyale.com/images/clanwars/{{elemento.clan.badgeId}}_magical.png" class="card-img-top backgroundPlayers" alt="card-img" style="width:350%">
 
@@ -120,5 +123,24 @@
   </table>
   <pagination-controls *ngIf="players" (pageChange)="pageActualMiembros = $event" id="second"></pagination-controls>
 </div>
+
+
 </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -37,7 +37,7 @@ export class ClashRoyaleService {
   //private authorization : string="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImVkZWM0MmZkLTM4MzktNGU1OS04ZjU3LWU4NDEwNWIyZDYxYiIsImlhdCI6MTU2OTc2OTE0Nywic3ViIjoiZGV2ZWxvcGVyLzFiOTZiYzNjLTRhZWUtODdlNC0zMjBkLWE0NTVmMTgxNDRiZiIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxODEuMS40LjE3OCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.u54STEzCEq_0AhiECdsUuPP-3NxHWq27vsAVyrre4QtHr9p1n3yLH-83Wum9A_3ivxdKylE6Gwj-7q-yexezTg";
   
 //openix
-  private authorization : string="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjVjYWIxYzFiLWM2YTYtNDc4Ny04ZmY4LWJhNGQzOWYxMjQ2OSIsImlhdCI6MTU3MDIwMDYzMiwic3ViIjoiZGV2ZWxvcGVyLzFiOTZiYzNjLTRhZWUtODdlNC0zMjBkLWE0NTVmMTgxNDRiZiIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxOTAuNTIuMzQuNDEiXSwidHlwZSI6ImNsaWVudCJ9XX0.BHjGQYPp6HO7_I4ncsWJItsI2TQFJfhSmzUSRLttTTh9jD-UG33JeOzoZFEfd44BObFFAuQXzON-O9elCtFBSA";
+ private authorization : string="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjVjYWIxYzFiLWM2YTYtNDc4Ny04ZmY4LWJhNGQzOWYxMjQ2OSIsImlhdCI6MTU3MDIwMDYzMiwic3ViIjoiZGV2ZWxvcGVyLzFiOTZiYzNjLTRhZWUtODdlNC0zMjBkLWE0NTVmMTgxNDRiZiIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxOTAuNTIuMzQuNDEiXSwidHlwZSI6ImNsaWVudCJ9XX0.BHjGQYPp6HO7_I4ncsWJItsI2TQFJfhSmzUSRLttTTh9jD-UG33JeOzoZFEfd44BObFFAuQXzON-O9elCtFBSA";
   
   
 
@@ -60,7 +60,7 @@ export class ClashRoyaleService {
     
 
     private Player: string="https://api.royaleapi.com/player/";
-    public getPlayer(tagPlayer:string):Observable<any>{
+    public getPlayerTag(tagPlayer:string):Observable<any>{
       const httpOptions={
         headers:new HttpHeaders({
           "Authorization": this.iconAuthorization
@@ -69,6 +69,9 @@ export class ClashRoyaleService {
       tagPlayer = tagPlayer.replace("#", "%23");
           return this._http.get(this.Player+tagPlayer , httpOptions);
       }
+      
+
+
       
       public getMembers(clanTag: string): Observable<any> {
         const httpOptions = {
@@ -123,6 +126,17 @@ const httpOptions={
 
 
 
+war:string="https://api-v3.royaleapi.com/clan"
+
+public getWarlog(clanTag: string): Observable<any> {
+  const httpOptions = {
+    headers: new HttpHeaders({
+      "Authorization": this.iconAuthorization
+    })
+  };
+  clanTag = clanTag.replace("#", "");
+  return this._http.get(this.war + "/" + clanTag +"/warlog", httpOptions);
+}
 
 
 
@@ -133,7 +147,11 @@ const httpOptions={
 
 
 
-  public getTag(clanTag: string): Observable<any> {
+
+
+
+
+  public getClanTag(clanTag: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Authorization": this.authorization

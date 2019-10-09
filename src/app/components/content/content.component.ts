@@ -24,53 +24,74 @@ export class ContentComponent implements OnInit {
 
 
 
-jugador:Player  
+
   constructor(private route: ActivatedRoute,private   clashService: ClashRoyaleService) { 
-    let mejor= JSON.parse(localStorage.getItem("mejor")) ;
-    this.jugador= mejor;
-  }
-
-  cargarMejor(){
     
-    console.log(this.jugador)
-    console.log(this.jugador.cards[0].iconUrls.medium)
 
   }
+
+
   ngOnInit() {
     this.route.params.subscribe( params => {
-     console.log(params.tag)
-     this.getClanTag(params.tag);
-     this.getPlayerTag(params.tag);
+
+     this.getPlayer1Tag(params.tag);
+     this.getPlayer2Tag(params.tag);
      //getClanTag(params.tag)
     });    
     
   }
 
-  getClanTag(inicioClan:string) {
+  jugador1:Player  
+  jugador2:Player  
+  getPlayer1Tag(inicioClan:string) {
     this.clashService.getPlayers(inicioClan)
       .subscribe((response: any) => {
         this.clan = new Clans();
         this.clan = response;
-        console.log(this.clan)
-
+        console.log("jugador1")
+        console.log(response)
+this.jugador1=response;
       }
         , error => console.log( alert("error en la peticion"))
       );
   }
 
 
-  getPlayerTag(inicioClan:string) {
-    this.clashService.getPlayer(inicioClan)
+getClanPlayer(tagClan:string){
+this.clashService.getClanTag(tagClan)
+.subscribe( (responseclan: any)=>{
+  console.log(responseclan)
+}
+
+)
+}
+
+
+
+
+
+
+carts:Array<any>
+  getPlayer2Tag(inicioPlayer:string) {
+    this.clashService.getPlayerTag(inicioPlayer)
       .subscribe((response: any) => {
+        console.log("jugador2")
+        console.log(response) ;
         this.clan = new Clans();
         this.clan = response;
-        console.log(this.clan)
+this.jugador2=response;
+this.carts= new Array<any>();
+  this.carts.push(response.cards);
+  this.carts=this.carts[0];
 
       }
         , error => console.log( alert("error en la peticion"))
       );
   }
 
+
+
+urlCarta:string;
 
 
 

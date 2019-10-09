@@ -13,7 +13,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { ClansComponent } from './components/clans/clans.component' 
+import { ClansComponent } from './components/clans/clans.component';
+import { CardComponent } from './components/card/card.component' 
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ClansComponent } from './components/clans/clans.component'
     ContentComponent,
     HomeComponent,
     FilterPipe,
-    ClansComponent
+    ClansComponent,
+    CardComponent
   ],
   imports: [
     BrowserAnimationsModule,

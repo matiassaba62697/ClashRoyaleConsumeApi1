@@ -1,43 +1,275 @@
 
-<div class="home" style="min-height: 600px">
+<div style="margin-left: 10%;  margin-bottom: 10px; margin-right: 10%; margin-top: 2%;"> 
+   <ul class="nav nav-tabs">
+           <li>
+                           <button id="btnHome"
+                           onclick="
+                           document.getElementById('contenido1').style.display='block'
+                           document.getElementById('contenido2').style.display='none'
+                           document.getElementById('contenido3').style.display='none'
+                           document.getElementById('btnHome').style.color='black'
+                           document.getElementById('btnHome').style.backgroundColor='white'
+                           document.getElementById('btnCartas').style.color='white'
+                           document.getElementById('btnCartas').style.backgroundColor='transparent'
+                           document.getElementById('btnEstadisticas').style.color='white'
+                           document.getElementById('btnEstadisticas').style.backgroundColor='transparent'"
+                           class="btn btn-outline-light" 
+                           style="color:black; background-color: white;border: 1px solid rgba(0, 0, 0, .0);">Home</button>
+           </li>
+           <li>
+                           <button id="btnCartas" 
+                           onclick="
+                           document.getElementById('contenido1').style.display='none'
+                           document.getElementById('contenido2').style.display='block'
+                           document.getElementById('contenido3').style.display='none'
+                           document.getElementById('btnHome').style.color='white'
+                           document.getElementById('btnHome').style.backgroundColor='transparent'
+                           document.getElementById('btnCartas').style.color='black'
+                           document.getElementById('btnCartas').style.backgroundColor='white'
+                           document.getElementById('btnEstadisticas').style.color='white'
+                           document.getElementById('btnEstadisticas').style.backgroundColor='transparent'"
+                            class="btn btn-outline-light" 
+                           style="background-color: transparent;border: 1px solid rgba(0, 0, 0, .0);">Cartas</button>
+           </li>
+           <li>
+                           <button id="btnEstadisticas"
+                           onclick="
+                           document.getElementById('contenido1').style.display='none'
+                           document.getElementById('contenido2').style.display='none'
+                           document.getElementById('contenido3').style.display='block'
+                           document.getElementById('btnHome').style.color='white'
+                           document.getElementById('btnHome').style.backgroundColor='transparent'
+                           document.getElementById('btnCartas').style.color='white'
+                           document.getElementById('btnCartas').style.backgroundColor='transparent'
+                           document.getElementById('btnEstadisticas').style.color='black'
+                           document.getElementById('btnEstadisticas').style.backgroundColor='white'" class="btn btn-outline-light" 
+                           style="background-color: transparent;border: 1px solid rgba(0, 0, 0, .0);">Estadisticas</button>
+           </li>
+   </ul>
+
+</div>
 
 
-    <div class="bestPlayers" *ngIf="jugador">
+
+
+
+
+
+
+
+
+
+
+<div class="home rounded-lg" style="min-height: 600px;margin-top: 20px; margin-right: 10%;  margin-left: 10%; background-color: white">
+
+
+
+   
+
+
+
+
+    <div id="contenido1" class="bestPlayers" *ngIf="jugador1" >
+
         <div class="card" >
-          <h5 class="card-header"  > {{jugador.name}}</h5>
+          <h5 class="card-header" style="background-color: black;color: white" > {{jugador1.name}}</h5>
     
-          <div class="card-body">
+          <div class="card-body" style="color: white;background-color: darkslategrey">
             <div class="card-body col-12">
     
-              <h5 class="card-title " >{{jugador.tag}}</h5>
+              <h5 class="card-title " >{{jugador1.tag}}</h5>
     
-              <div class="col-12 row"  style="background-color: cyan; margin-left: 0%" >
+              <div class="col-12 row"  style=" margin-left: 0%" >
+                <img src="https://statsroyale.com/images/clanwars/{{jugador1.clan.badgeId}}_magical.png" alt="">
                   <p class="card-text col-6"> TROFEOS</p>
-                  <p class="card-text col-6">{{jugador.trophies}}</p>
+                  <p class="card-text col-6">{{jugador1.trophies}}</p>
                   <p class="card-text col-6"><small>Clan</small> </p> 
-                  <p class="card-text col-6">{{jugador.clan.name}}</p>
+                  <p class="card-text col-6">{{jugador1.clan.name}}</p>
+                  <p class="card-text col-6"><small>Clan Tag</small> </p> 
+                  <p class="card-text col-6">{{jugador1.clan.tag}}</p>
                   <p class="card-text col-6"><small><small>Donaciones</small></small></p>
-                  <p class="card-text col-6">{{jugador.donations}}</p>
+                  <p class="card-text col-6">{{jugador1.donations}}</p>
                   <p class="card-text col-6"><small><small>Partidas ganadas</small></small></p>
-                  <p class="card-text col-6">{{jugador.wins}}</p>
+                  <p class="card-text col-6">{{jugador1.wins}}</p>
                   <p class="card-text col-6"><small><small>Partidas perdidas</small></small></p>
-                  <p class="card-text col-6">{{jugador.losses}}</p>
+                  <p class="card-text col-6">{{jugador1.losses}}</p>
                   <p class="card-text col-6">Nivel</p>
-                  <p class="card-text col-6">{{jugador.expLevel}}</p></div>
-    <button (click)="cargarMejor()">cargar</button>
+                  <p class="card-text col-6">{{jugador1.expLevel}}</p></div>
+
             </div>
             
         </div>
       </div></div>
-      
+ 
+
     
     
     
+ 
+    <div id="contenido2" style="display: none">
+  <table  class="table table-striped" style="width: 90%; margin-left: 6%">
+    <tbody>
+        <div class="row col-12">
+      <div class="row ">
+
+        <tr class="iterador" *ngFor="let elemento of carts">
+            <a class="menu__link menu__link--select" style="color: white" (click)="cargarMejor(elemento)" routerLink="/card/{{elemento.id}}">
+    <li class="etiquetaCarta"><img src="{{elemento.icon}}" alt="" style="width: 50px; height: 50px;">
+      <ul class="row">
+        <li style="margin-bottom: 0%"><h6 class="submenu">{{elemento.name}}</h6></li>
+        <li style="margin-bottom: 0%"><h6 class="submenu">{{elemento.elixir}}</h6></li>
+        <li style="margin-bottom: 0%"><h6 class="submenu">{{elemento.level}}/{{elemento.maxLevel}}</h6></li>
+        <li style="margin-bottom: 0%"><h6 class="submenu">{{elemento.rarity}}</h6></li>
+      </ul>
+    </li>
+  </a>  
+        </tr>
     
-    
-    
-    
-    
+      </div>
     </div>
-  
-  
+    </tbody>
+</table>
+    
+</div>
+
+
+
+
+
+
+<table id="contenido3"  style="display: none;margin-left: 10% " *ngIf="jugador1"> <tr>
+  <td>
+    <table class="table table-hover table-dark col-4" style="width: 220px">
+        <tr>
+           <td rowspan="4"><img src="https://cdn.statsroyale.com/images/trophy.png" alt="" style="height: 80px; width: 200px;"> TROFEOS
+          </td>           <td>Trofeos</td>           <td>{{jugador1.trophies}}</td>
+        </tr>
+   
+        <tr>
+            <td><small>Máximo trofeos</small></td>        <td>{{jugador1.bestTrophies}}</td>
+         </tr>
+
+   
+     </table>
+    </td>
+  </tr><tr>
+    <td>
+
+
+     <table class="table table-hover table-dark col-4" style="width: 245px">
+        <tr>
+           <td rowspan="4"><img src="https://cdn.statsroyale.com/images/battle.png" alt="" style="height: 40px; width: 50px;"><small>ESTADÍSTICAS</small>
+          </td><td>Victorias</td>   <td>{{jugador1.wins}}</td>
+        </tr>
+        <tr>
+           <td>Derrotas</td>  <td>{{jugador1.losses}}</td>
+        </tr>
+        <tr>
+            <td>Victorias de tres coronas</td>  <td>{{jugador1.threeCrownWins}}</td>
+         </tr>
+         <tr>
+            <td>Donaciones totales</td>  <td>{{jugador1.totalDonations}}</td>
+         </tr>
+       
+     </table>
+    </td> </tr><tr><td>
+
+
+     <table class="table table-hover table-dark " style="width: 250px">
+        <tr>
+           <td rowspan="3"><img src="https://cdn.statsroyale.com/images/clan-wars.png" alt="" style="height: 100px; width: 200px;"><small>ESTADÍSTICAS DE GUERRA DE CLANES</small>
+          </td><td><small>Victorias del día de guerra</small></td>   <td>{{jugador1.warDayWins}}</td>
+        </tr>
+        <tr>
+           <td><small>Cartas del clan reunidas</small></td>   <td>{{jugador1.clanCardsCollected}}</td>
+        </tr>
+
+     </table>
+    </td> </tr><tr><td>
+
+
+        <table class="table table-hover table-dark col-4" style="width: 220px">
+           <tr>
+              <td rowspan="3"><img src="https://cdn.statsroyale.com/images/challenges.png" alt=""  style="height: 100px; width: 200px;"><small>ESTADÍSTICAS DE DESAFÍO</small>
+             </td> <td>Máximo de victorias</td>  <td>{{jugador1.challengeMaxWins}}</td>
+           </tr>
+           <tr>
+              <td>Cartas ganadas</td>  <td>{{jugador1.challengeCardsWon}}</td>
+           </tr>
+           <tr>
+              <td>Partidas jugadas</td>  <td>{{jugador1.battleCount}}</td>
+           </tr>
+        </table>
+       </td>
+    </tr>
+    <tr><td>
+
+
+        <table class="table table-hover table-dark col-4" style="width: 220px">
+           <tr>
+              <td rowspan="2"><img src="https://cdn.statsroyale.com/images/tournament.png" alt=""  style="height: 100px; width: 200px;"><small>ESTADÍSTICAS DE TORNEO</small>
+             </td> <td>Partidas jugadas</td>  <td>{{jugador1.tournamentBattleCount}}</td>
+           </tr>
+           <tr>
+              <td>Cartas ganadas</td>  <td>{{jugador1.tournamentCardsWon}}</td>
+           </tr>
+   
+        </table>
+       </td>
+    </tr>
+    <tr><td>
+
+<!---------------------------------->
+        <table class="table table-hover table-dark col-4" style="width: 220px">
+           <tr>
+              <td rowspan="3"><img src="https://cdn.statsroyale.com/images/legendaryPoints.png" alt=""  style="height: 100px; width: 200px;"><small>TEMPORADA ANTERIOR</small>
+             </td> <td>Puesto</td>  <td>{{jugador1.leagueStatistics.previousSeason.rank}}</td>
+           </tr>
+           <tr>
+              <td>Máximo de trofeos</td>  <td>{{jugador1.leagueStatistics.previousSeason.bestTrophies}}</td>
+           </tr>
+           <tr>
+              <td>Trofeos</td>  <td>{{jugador1.leagueStatistics.previousSeason.trophies}}</td>
+           </tr>
+        </table>
+       </td>
+    </tr>
+    <tr><td>
+
+        <!---------------------------------->
+                <table class="table table-hover table-dark col-4" style="width: 220px">
+                   <tr>
+                      <td rowspan="3"><img src="https://cdn.statsroyale.com/images/clan-trophies.png" alt=""  style="height: 100px; width: 200px;"><small>MEJOR TEMPORADA</small>
+                     </td> <td>Temporada</td>  <td>{{jugador1.leagueStatistics.bestSeason.id}}</td>
+                   </tr>
+                   <tr>
+                      <td>Puesto</td> <td>{{jugador1.leagueStatistics.bestSeason.rank}}</td>
+                   </tr>
+                   <tr>
+                      <td>Trofeos</td>  <td>{{jugador1.leagueStatistics.bestSeason.trophies}}</td>
+                   </tr>
+                </table>
+               </td>
+            </tr>
+            <tr><td>
+
+                <!---------------------------------->
+                        <table class="table table-hover table-dark col-4" style="width: 220px">
+                           <tr>
+                              <td rowspan="3"><img src="https://cdn.statsroyale.com/images/badges/crl20wins.png" alt=""  style="height: 100px; width: 200px;"><small>TEMPORADA ACTUAL</small>
+                             </td> <td>Temporada</td>  <td>{{jugador1.leagueStatistics.currentSeason.bestTrophies}}</td>
+                           </tr>
+                           <tr>
+                              <td>Puesto</td> <td>{{jugador1.leagueStatistics.currentSeason.rank}}</td>
+                           </tr>
+                           <tr>
+                              <td>Trofeos</td>  <td>{{jugador1.leagueStatistics.currentSeason.trophies}}</td>
+                           </tr>
+                        </table>
+                       </td>
+                    </tr>
+    </table>
+
+
+
+    </div>
