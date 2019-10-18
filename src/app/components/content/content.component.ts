@@ -44,13 +44,14 @@ export class ContentComponent implements OnInit {
   jugador1:Player  
   jugador2:Player  
   getPlayer1Tag(inicioClan:string) {
+
     this.clashService.getPlayers(inicioClan)
       .subscribe((response: any) => {
         this.clan = new Clans();
         this.clan = response;
         console.log("jugador1")
         console.log(response)
-this.jugador1=response;
+
       }
         , error => console.log( alert("error en la peticion getplayer1tag"))
 
@@ -71,7 +72,7 @@ this.clashService.getClanTag(tagClan)
 
 
 
-
+currentDeck:Array<any>;
 carts:Array<any>
   getPlayer2Tag(inicioPlayer:string) {
     this.clashService.getPlayerTag(inicioPlayer)
@@ -81,7 +82,10 @@ carts:Array<any>
         this.clan = new Clans();
         this.clan = response;
 this.jugador2=response;
+this.currentDeck= new Array<any>();
 this.carts= new Array<any>();
+this.currentDeck.push(response.currentDeck);
+this.currentDeck=this.currentDeck[0]
   this.carts.push(response.cards);
   this.carts=this.carts[0];
 

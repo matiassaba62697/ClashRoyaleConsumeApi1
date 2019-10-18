@@ -16,7 +16,7 @@ import { ClanMembers } from 'src/app/models/clans/clan-members';
 })
 export class ClansComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private   clashService: ClashRoyaleService) {  }
+  constructor(private route: ActivatedRoute,private   clashService: ClashRoyaleService) { this.getClanName("a") }
 
   ngOnInit() {
     this.route.params.subscribe( params => {
@@ -44,6 +44,10 @@ this.getwarLog(params.tag);
   mejorJugador: Player;
 
 
+
+
+  
+
 getClanMember(clanTags: string) {
   this.members = new Array<ClanMembers>();
   this.clashService.getMembers(clanTags)
@@ -70,13 +74,23 @@ cargarPlayers(playerTag:string){
     , error => console.log( alert("error en la peticion"))
   );
 }
+getClanName(tag:string) {
+  this.clashService.getClanName(tag)
+    .subscribe(response => {
+  
+console.log(response);
+
+    }
+      , error => console.log( alert("error en la peticion"))
+    );
+}
 
 getClanTag(tag:string) {
   this.clashService.getClanTag(tag)
     .subscribe((response: any) => {
       this.clan = new Clans();
       this.clan = response;
-console.log(this.clan);
+
 
     }
       , error => console.log( alert("error en la peticion"))

@@ -57,6 +57,18 @@ export class ClashRoyaleService {
     }
     
     
+public clanName: string="https://api.royaleapi.com/clan/search?name=Omega Squadron"
+public getClanName(tagname:string):Observable<any>{
+  const httpOptions={
+    headers:new HttpHeaders({
+      "Authorization": this.iconAuthorization
+    })
+  };
+
+      return this._http.get(this.clanName , httpOptions);
+  }
+  
+
 
     private Player: string="https://api.royaleapi.com/player/";
     public getPlayerTag(tagPlayer:string):Observable<any>{

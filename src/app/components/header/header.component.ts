@@ -42,7 +42,7 @@ jugadores(){
 clanes(){
 console.log(this.busqueda)
   this.placeholder="Tag de Clanes"
-  this.redirec="clan/%23"+this.busqueda;
+  this.redirec=this.busqueda;
   this.etiqueta="clanes"
 }
 
